@@ -1,0 +1,4 @@
+Phase,Val Accuracy (Top-1),Top-5 Accuracy
+Phase 1 (tête seule),0.76,
+Phase 2 (fine-tuning layer3/4),0.8252,0.9546
+Phase 3 (+ dropout + layer2),0.8457,0.9653

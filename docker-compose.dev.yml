@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: food_recognition_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    restart: always
+    env_file: .env
+    environment:
+      DB_HOST: db
+    volumes:
+      - .:/app                     
+      - /app/__pycache__           
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./food-frontend
+      dockerfile: Dockerfile.dev
+    restart: always
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      WATCHPACK_POLLING: "true"     
+    volumes:
+      - ./food-frontend:/app
+      - /app/node_modules           
+      - /app/.next
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:

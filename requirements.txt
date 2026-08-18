@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+torch
+torchvision
+pillow
+python-dotenv
+requests
+python-multipart
+psycopg2-binary
+groq
+sqlalchemy
+pytest
+httpx
+chromadb
+sentence-transformers

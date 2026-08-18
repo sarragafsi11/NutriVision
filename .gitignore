@@ -1,0 +1,37 @@
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+
+# Docker / databases
+chroma_db/
+pgdata/
+
+# IDE
+.vscode/
+
+# Model files
+*.pth
+*.pt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dataset (trop volumineux pour Git, à re-télécharger séparément si besoin)
+food/images/
+food/*.h5
